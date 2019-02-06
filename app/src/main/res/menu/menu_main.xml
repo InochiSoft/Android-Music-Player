@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.inochi.music.player.MainActivity">
+    <item
+        android:id="@+id/action_equalizer"
+        android:orderInCategory="100"
+        android:title="@string/action_equalizer"
+        android:icon="@mipmap/ic_eq_white"
+        app:showAsAction="ifRoom" />
+</menu>

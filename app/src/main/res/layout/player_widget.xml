@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linNotif"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="6dp"
+    android:background="@drawable/oval_gradient_black_round" >
+
+    <ImageView
+        android:id="@+id/btnLogoNotif"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:id="@+id/linTextNotif"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="2dp"
+            android:paddingStart="2dp"
+            android:paddingRight="0dp"
+            android:paddingEnd="0dp"
+            android:paddingBottom="2dp"
+            android:layout_gravity="center_vertical"
+            android:paddingTop="2dp" >
+
+            <TextView
+                android:id="@+id/txtTitleNotif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
+                android:text=""
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FFF" />
+
+            <LinearLayout
+                android:id="@+id/linPlayer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@android:color/transparent"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <FrameLayout
+                    android:id="@+id/player_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom">
+
+                    <ImageButton
+                        android:id="@+id/btnPrevious"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:padding="8dp"
+                        android:layout_marginRight="80dp"
+                        android:layout_marginEnd="80dp"
+                        android:layout_gravity="center|center_vertical"
+                        android:background="@drawable/button_state_grey"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ic_media_previous"  />
+
+                    <ImageButton
+                        android:id="@+id/btnPlay"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center|center_vertical"
+                        android:padding="8dp"
+                        android:background="@drawable/button_state_grey"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ic_media_play"  />
+
+                    <ImageButton
+                        android:id="@+id/btnPause"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center|center_vertical"
+                        android:padding="8dp"
+                        android:visibility="gone"
+                        android:background="@drawable/button_state_grey"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ic_media_pause" />
+
+                    <ImageButton
+                        android:id="@+id/btnNext"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center|center_vertical"
+                        android:padding="8dp"
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginStart="80dp"
+                        android:background="@drawable/button_state_grey"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ic_media_next" />
+                </FrameLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+</LinearLayout>

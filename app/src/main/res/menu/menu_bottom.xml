@@ -1,0 +1,34 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.inochi.music.player.MainActivity">
+
+    <item
+        android:id="@+id/action_previous"
+        android:orderInCategory="100"
+        android:title="@string/action_prev"
+        android:icon="@android:drawable/ic_media_previous"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_play"
+        android:orderInCategory="100"
+        android:title="@string/action_play"
+        android:icon="@android:drawable/ic_media_play"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_pause"
+        android:orderInCategory="100"
+        android:title="@string/action_pause"
+        android:icon="@android:drawable/ic_media_pause"
+        android:visible="false"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_next"
+        android:orderInCategory="100"
+        android:title="@string/action_next"
+        android:icon="@android:drawable/ic_media_next"
+        app:showAsAction="always" />
+</menu>

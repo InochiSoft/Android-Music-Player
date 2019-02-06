@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarTop"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/oval_gradient_black"
+            android:layout_gravity="top"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <android.support.v7.widget.ActionMenuView
+                android:id="@+id/amvMenuTop"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvwList"
+            android:padding="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:background="@drawable/oval_gradient_black"
+            android:layout_marginBottom="74dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/oval_gradient_black"
+            android:layout_gravity="bottom">
+
+            <SeekBar
+                android:id="@+id/seekProgress"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:progress="0"
+                android:thumb="@drawable/seek_thumb" />
+        </FrameLayout>
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarBottom"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/oval_gradient_black"
+            android:layout_gravity="bottom"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <android.support.v7.widget.ActionMenuView
+                android:id="@+id/amvMenuBottom"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </android.support.v7.widget.Toolbar>
+
+    </FrameLayout>
+</android.support.constraint.ConstraintLayout>

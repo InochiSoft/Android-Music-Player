@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linCardContent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="4dp"
+    android:layout_margin="5dp"
+    android:layout_gravity="center"
+    android:orientation="horizontal"
+    android:background="@drawable/selector_grey"
+    android:focusable="true"
+    android:clickable="true">
+
+    <CheckBox
+        android:id="@+id/chkSongSel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:visibility="gone"
+        android:layout_gravity="center" />
+
+    <ImageView
+        android:id="@+id/imgSongIcon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:scaleType="fitCenter"
+        android:layout_gravity="center"
+        android:layout_margin="4dp"
+        app:srcCompat="@mipmap/ic_music_white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginLeft="6dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginRight="38dp"
+        android:layout_gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvwSongTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginBottom="4dp"
+            android:text="Judul" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp">
+            <ImageView
+                android:id="@+id/imgSongArtist"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center"
+                app:srcCompat="@mipmap/ic_artist_white" />
+            <TextView
+                android:id="@+id/tvwSongArtist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
+                android:textSize="14sp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:textColor="@color/white"
+                android:text="" />
+        </TableRow>
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btnSongMenu"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:gravity="center"
+        android:padding="6dp"
+        android:scaleType="fitCenter"
+        android:layout_gravity="center"
+        android:layout_marginLeft="-38dp"
+        android:layout_marginStart="-38dp"
+        android:visibility="gone"
+        android:background="@drawable/selector_grey"
+        app:srcCompat="@mipmap/ic_delete_white" />
+
+</LinearLayout>
