@@ -87,38 +87,6 @@ public class MainActivity extends BaseActivity implements PlayerListener, SongLi
         rvwList = findViewById(R.id.rvwList);
         seekProgress = findViewById(R.id.seekProgress);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-
-        songItems = bundleSetting.getPlayListSelected();
-
-        if (songItems == null){
-            songItems = new ArrayList<>();
-
-            SongItem songItem = new SongItem();
-            songItem.setSongArtist("Unknown");
-            songItem.setSongTitle(String.valueOf(R.raw.sample));
-            songItem.setSongName(String.valueOf(R.raw.sample));
-            songItem.setSongPath(String.valueOf(R.raw.sample));
-            songItems.add(songItem);
-
-            songItem = new SongItem();
-            songItem.setSongArtist("Unknown");
-            songItem.setSongTitle("Despacito");
-            songItem.setSongName(String.valueOf(R.raw.despacito));
-            songItem.setSongPath(String.valueOf(R.raw.despacito));
-            songItems.add(songItem);
-
-            bundleSetting.setPlayListSelected(songItems);
-        }
-
-        songAdapter = new SongAdapter(songItems, this);
-
-        if (rvwList != null){
-            rvwList.setHasFixedSize(true);
-            rvwList.setLayoutManager(layoutManager);
-            rvwList.setAdapter(songAdapter);
-        }
-
         seekProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
@@ -179,9 +147,45 @@ public class MainActivity extends BaseActivity implements PlayerListener, SongLi
         doBindService();
     }
 
+    private void loadPlaylist(){
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        songItems = bundleSetting.getPlayListSelected();
+
+        if (songItems == null){
+            songItems = new ArrayList<>();
+
+            SongItem songItem = new SongItem();
+            songItem.setSongArtist("Unknown");
+            songItem.setSongTitle(String.valueOf(R.raw.sample));
+            songItem.setSongName(String.valueOf(R.raw.sample));
+            songItem.setSongPath(String.valueOf(R.raw.sample));
+            songItems.add(songItem);
+
+            songItem = new SongItem();
+            songItem.setSongArtist("Unknown");
+            songItem.setSongTitle("Despacito");
+            songItem.setSongName(String.valueOf(R.raw.despacito));
+            songItem.setSongPath(String.valueOf(R.raw.despacito));
+            songItems.add(songItem);
+
+            bundleSetting.setPlayListSelected(songItems);
+        }
+
+        songAdapter = new SongAdapter(songItems, this);
+
+        if (rvwList != null){
+            rvwList.setHasFixedSize(true);
+            rvwList.setLayoutManager(layoutManager);
+            rvwList.setAdapter(songAdapter);
+        }
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
+
+        loadPlaylist();
+
         Intent service = new Intent(this, PlayerService.class);
         service.setAction(Constants.Player.Action.STATUS);
         startService(service);
@@ -292,6 +296,33 @@ public class MainActivity extends BaseActivity implements PlayerListener, SongLi
             case R.id.action_next:
                 playService = new Intent(this, PlayerService.class);
                 playService.setAction(Constants.Player.Action.NEXT);
+                startService(playService);
+                break;
+            case R.id.action_add:
+                Intent intent = new Intent(MainActivity.this, FileActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.action_delete:
+                if (songAdapter != null){
+                    songAdapter.setShowDelete(true);
+                    songAdapter.notifyDataSetChanged();
+                }
+                break;
+            case R.id.action_clear:
+                songItems = new ArrayList<>();
+
+                if (songAdapter != null){
+                    songAdapter = new SongAdapter(songItems, this);
+
+                    if (rvwList != null){
+                        rvwList.setAdapter(songAdapter);
+                    }
+                }
+
+                bundleSetting.setPlayListSelected(songItems);
+
+                playService = new Intent(this, PlayerService.class);
+                playService.setAction(Constants.Player.Action.REFRESH);
                 startService(playService);
                 break;
         }
@@ -428,6 +459,19 @@ public class MainActivity extends BaseActivity implements PlayerListener, SongLi
                 playService.setAction(Constants.Player.Action.PLAY);
                 startService(playService);
             }
+        }
+    }
+
+    @Override
+    public void onDeleteButtonClick(View view, SongItem songItem, int position) {
+        if (songItems != null){
+            songItems.remove(position);
+            if (songAdapter != null) songAdapter.notifyDataSetChanged();
+            bundleSetting.setPlayListSelected(songItems);
+
+            Intent playService = new Intent(this, PlayerService.class);
+            playService.setAction(Constants.Player.Action.REFRESH);
+            startService(playService);
         }
     }
 }

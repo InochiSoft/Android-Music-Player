@@ -7,7 +7,9 @@
     <string name="action_prev">Previous</string>
     <string name="action_next">Next</string>
     <string name="action_add">Add</string>
+    <string name="action_clear">Clear</string>
     <string name="action_delete">Delete</string>
     <string name="action_equalizer">Equalizer</string>
     <string name="action_playlist">Playlist</string>
+    <string name="title_activity_file">File Activity</string>
 </resources>

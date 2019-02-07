@@ -88,4 +88,14 @@ public final class Constants {
             public static final String INTER_SHOW = "ADMOB_INTER_UNIT_ID";
         }
     }
+
+    public static final class GroupType {
+        public static final int FILE_HEADER = 0;
+        public static final int FILE_ITEM = 1;
+
+        public static final int TYPE_FOLDER = 0;
+        public static final int TYPE_FILE = 1;
+        public static final int TYPE_PARENT = 2;
+    }
+
 }
